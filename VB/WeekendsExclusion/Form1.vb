@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-#Region "#usings"
+﻿#Region "#usings"
 Imports DevExpress.XtraCharts
 Imports System
 Imports System.Data
@@ -9,11 +8,12 @@ Imports System.Windows.Forms
 Namespace WeekendsExclusion
 	Partial Public Class Form1
 		Inherits Form
+
 		Public Sub New()
 			InitializeComponent()
 		End Sub
 
-		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 '			#Region "OriginalChart"
 			Dim series0 As Series = chartControl0.Series(0)
 			series0.ArgumentScaleType = ScaleType.DateTime
@@ -27,7 +27,7 @@ Namespace WeekendsExclusion
 			series1.DataSource = CreateChartData()
 			series1.SetFinancialDataMembers("Argument", "Low", "High", "Open", "Close")
 
-			Dim dateTimeScaleOptions As DateTimeScaleOptions = (CType(chartControl1.Diagram, XYDiagram)).AxisX.DateTimeScaleOptions
+			Dim dateTimeScaleOptions As DateTimeScaleOptions = CType(chartControl1.Diagram, XYDiagram).AxisX.DateTimeScaleOptions
 
 			' Excludes holidays from the axis scale.
 			dateTimeScaleOptions.WorkdaysOnly = True
@@ -51,7 +51,7 @@ Namespace WeekendsExclusion
 			series2.DataSource = CreateChartData()
 			series2.SetFinancialDataMembers("Argument", "Low", "High", "Open", "Close")
 
-			Dim dateTimeScaleOptions2 As DateTimeScaleOptions = (CType(chartControl2.Diagram, XYDiagram)).AxisX.DateTimeScaleOptions
+			Dim dateTimeScaleOptions2 As DateTimeScaleOptions = CType(chartControl2.Diagram, XYDiagram).AxisX.DateTimeScaleOptions
 
 			' Excludes all axis ranges without data points.
 			' In this example, 8th of March has no data points to display and is not displayed on the X-axis.
