@@ -8,15 +8,17 @@
 ' </auto-generated>
 '------------------------------------------------------------------------------
 
+
+Imports Microsoft.VisualBasic
+Imports System
 Namespace My
 
 
-	<System.Runtime.CompilerServices.CompilerGeneratedAttribute()>
-	<System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")>
+	<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(), Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")> _
 	Friend NotInheritable Partial Class Settings
 		Inherits System.Configuration.ApplicationSettingsBase
 
-		Private Shared defaultInstance As Settings = (CType(System.Configuration.ApplicationSettingsBase.Synchronized(New Settings()), Settings))
+		Private Shared defaultInstance As Settings = (CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New Settings()), Settings))
 
 		Public Shared ReadOnly Property [Default]() As Settings
 			Get
