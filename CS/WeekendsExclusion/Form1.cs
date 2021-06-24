@@ -25,7 +25,7 @@ namespace WeekendsExclusion {
 
             DateTimeScaleOptions dateTimeScaleOptions = ((XYDiagram)chartControl1.Diagram).AxisX.DateTimeScaleOptions;
 
-            // Excludes holidays from the axis scale.
+            // Enables workdays options.
             dateTimeScaleOptions.WorkdaysOnly = true;
 
             // Specifies custom working days.
