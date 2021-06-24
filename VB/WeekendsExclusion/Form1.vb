@@ -1,9 +1,7 @@
-﻿#Region "#usings"
 Imports DevExpress.XtraCharts
 Imports System
 Imports System.Data
 Imports System.Windows.Forms
-#End Region ' #usings
 
 Namespace WeekendsExclusion
 	Partial Public Class Form1
