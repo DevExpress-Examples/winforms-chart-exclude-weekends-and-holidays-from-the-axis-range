@@ -27,7 +27,7 @@ Namespace WeekendsExclusion
 
 			Dim dateTimeScaleOptions As DateTimeScaleOptions = CType(chartControl1.Diagram, XYDiagram).AxisX.DateTimeScaleOptions
 
-			' Enables workdays options.
+			' Excludes holidays from the axis scale.
 			dateTimeScaleOptions.WorkdaysOnly = True
 
 			' Specifies custom working days.
