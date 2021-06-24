@@ -3,13 +3,18 @@
 
 * [Form1.cs](./CS/WeekendsExclusion/Form1.cs) (VB: [Form1.vb](./VB/WeekendsExclusion/Form1.vb))
 <!-- default file list end -->
-# How to exclude weekends and holidays from the axis range
+# Charts - How to exclude weekends and holidays from the axis range
 
+This example demonstrates how you can exclude weekends and holidays from the X-axis range. This feature is useful for financial charting.
 
-<p>This example demonstrates how you can exclude weekends and holidays from the X-axis range.</p><p>This feature is of extreme importance for financial charting, and also allows you to specify a custom week, or import holiday lists either in Microsoft Outlook or in our native XtraScheduler format.</p><p>For more information, see <a href="http://documentation.devexpress.com/XtraCharts/CustomDocument6247.aspx">Date-Time Data Representation</a> and <a href="http://documentation.devexpress.com/XtraCharts/CustomDocument8946.aspx">Financial Charting</a>.</p><br />
-<br />
+You can specify a custom week, or import holiday lists in Microsoft Outlook or in our native [XtraScheduler](https://docs.devexpress.com/WindowsForms/1729/controls-and-libraries/scheduler/visual-elements/scheduler-control) format.
 
+The first chart excludes holidays and non-working days from the axis scale and shows how to set custom workdays and holidays. In this example, Sunday is a working day and Saturday is a day off, 6th of March (Saturday) is an additional working day and 8th of March (Monday) is an additional holiday.
 
-<br/>
+The second chart shows how to exclude axis ranges without data points. In this example, 8th of March has no data points to display and is not displayed on the X-axis.
 
+## Documentation
 
+- [Work Time and Workday Configuration](https://docs.devexpress.com/WindowsForms/16474/controls-and-libraries/chart-control/data-representation/work-time-and-workday-configuration)
+- [Financial Charting](https://docs.devexpress.com/WindowsForms/8946/controls-and-libraries/chart-control/data-representation/financial-charting)
+- []()

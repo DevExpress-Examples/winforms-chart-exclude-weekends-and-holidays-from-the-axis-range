@@ -1,9 +1,9 @@
 ﻿Imports Microsoft.VisualBasic
 #Region "#usings"
-Imports System
-Imports System.Windows.Forms
 Imports DevExpress.XtraCharts
-' ...
+Imports System
+Imports System.Data
+Imports System.Windows.Forms
 #End Region ' #usings
 
 Namespace WeekendsExclusion
@@ -14,41 +14,75 @@ Namespace WeekendsExclusion
 		End Sub
 
 		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+'			#Region "OriginalChart"
+			Dim series0 As Series = chartControl0.Series(0)
+			series0.ArgumentScaleType = ScaleType.DateTime
+			series0.DataSource = CreateChartData()
+			series0.SetFinancialDataMembers("Argument", "Low", "High", "Open", "Close")
+'			#End Region
+
+'			#Region "Chart1"
 			Dim series1 As Series = chartControl1.Series(0)
 			series1.ArgumentScaleType = ScaleType.DateTime
+			series1.DataSource = CreateChartData()
+			series1.SetFinancialDataMembers("Argument", "Low", "High", "Open", "Close")
 
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 1), New Object() { 24.00, 25.00, 25.00, 24.875 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 2), New Object() { 23.625, 25.125, 24.00, 24.875 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 3), New Object() { 26.25, 28.25, 26.75, 27.00 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 4), New Object() { 26.50, 27.875, 26.875, 27.25 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 7), New Object() { 26.375, 27.50, 27.375, 26.75 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 8), New Object() { 25.75, 26.875, 26.75, 26.00 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 9), New Object() { 25.75, 26.75, 26.125, 26.25 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 10), New Object() { 25.75, 26.375, 26.375, 25.875 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 11), New Object() { 24.875, 26.125, 26.00, 25.375 }))
-			series1.Points.Add(New SeriesPoint(New DateTime(1994, 3, 14), New Object() { 25.125, 26.00, 25.625, 25.75 }))
+			Dim dateTimeScaleOptions As DateTimeScaleOptions = (CType(chartControl1.Diagram, XYDiagram)).AxisX.DateTimeScaleOptions
 
-'			#Region "#code"
-Dim axisX As AxisX = (CType(chartControl1.Diagram, XYDiagram)).AxisX
+			' Excludes holidays from the axis scale.
+			dateTimeScaleOptions.WorkdaysOnly = True
 
-' Exclude holidays from the axis scale.
-axisX.WorkdaysOnly = True
+			' Specifies custom working days.
+			' In this example, Sunday is a working day and Saturday is a day off.
+			dateTimeScaleOptions.WorkdaysOptions.Workdays = Weekday.Sunday Or Weekday.Monday Or Weekday.Tuesday Or Weekday.Wednesday Or Weekday.Thursday Or Weekday.Friday
 
-' Specify custom working days.
-axisX.WorkdaysOptions.Workdays = Weekday.Sunday Or Weekday.Monday Or _ 
-    Weekday.Tuesday Or Weekday.Wednesday Or Weekday.Thursday Or Weekday.Friday
+			' Specifies custom holidays.
+			' In this example, 8th of March (Monday) is an additional holiday.
+			dateTimeScaleOptions.WorkdaysOptions.Holidays.Add(New KnownDate("Custom Holiday", New DateTime(2021, 3, 8, 0, 0, 0, 0)))
 
-' Specify holidays
-axisX.WorkdaysOptions.Holidays.AddRange(New KnownDate() { _ 
-    New KnownDate("Custom Holiday 1", New DateTime(1994, 3, 2, 0, 0, 0, 0)), _ 
-    New KnownDate("Custom Holiday 2", New DateTime(1994, 4, 2, 0, 0, 0, 0))})
+			' Specifies working days. They have a priority over specified holidays.
+			' In this example, 6th of March (Saturday) is an additional working day.
+			dateTimeScaleOptions.WorkdaysOptions.ExactWorkdays.Add(New KnownDate("Community Work Day", New DateTime(2021, 3, 6, 0, 0, 0, 0)))
+'			#End Region
 
-' Specify strict working days.
-' Thay will have a priority over the holidays specified.
-axisX.WorkdaysOptions.ExactWorkdays.Add(New KnownDate _ 
-    ("Community Work Day", New DateTime(1994, 3, 2, 0, 0, 0, 0)))
-'			#End Region ' #code
+'			#Region "Chart2"
+			Dim series2 As Series = chartControl2.Series(0)
+			series2.ArgumentScaleType = ScaleType.DateTime
+			series2.DataSource = CreateChartData()
+			series2.SetFinancialDataMembers("Argument", "Low", "High", "Open", "Close")
+
+			Dim dateTimeScaleOptions2 As DateTimeScaleOptions = (CType(chartControl2.Diagram, XYDiagram)).AxisX.DateTimeScaleOptions
+
+			' Excludes all axis ranges without data points.
+			' In this example, 8th of March has no data points to display and is not displayed on the X-axis.
+			dateTimeScaleOptions2.SkipRangesWithoutPoints = True
+'			#End Region
 		End Sub
 
+		Private Function CreateChartData() As DataTable
+			' Create an empty table.
+			Dim table As New DataTable("Table1")
+
+			' Add two columns to the table.
+			table.Columns.Add("Argument", GetType(DateTime))
+			table.Columns.Add("Low", GetType(Double))
+			table.Columns.Add("High", GetType(Double))
+			table.Columns.Add("Open", GetType(Double))
+			table.Columns.Add("Close", GetType(Double))
+
+			table.Rows.Add(New DateTime(2021, 3, 1), 24.00, 25.00, 25.00, 24.875)
+			table.Rows.Add(New DateTime(2021, 3, 2), 23.625, 25.125, 24.00, 24.875)
+			table.Rows.Add(New DateTime(2021, 3, 3), 26.25, 28.25, 26.75, 27.00)
+			table.Rows.Add(New DateTime(2021, 3, 4), 26.50, 27.875, 26.875, 27.25)
+			table.Rows.Add(New DateTime(2021, 3, 5), 25.75, 26.875, 26.75, 26.00)
+			table.Rows.Add(New DateTime(2021, 3, 6), 26.375, 27.50, 27.375, 26.75)
+			table.Rows.Add(New DateTime(2021, 3, 7), 25.25, 26.1, 25.725, 25.85)
+			table.Rows.Add(New DateTime(2021, 3, 9), 25.75, 26.75, 26.125, 26.25)
+			table.Rows.Add(New DateTime(2021, 3, 10), 25.75, 26.375, 26.375, 25.875)
+			table.Rows.Add(New DateTime(2021, 3, 11), 24.875, 26.125, 26.00, 25.375)
+			table.Rows.Add(New DateTime(2021, 3, 12), 25.125, 26.00, 25.625, 25.75)
+
+			Return table
+		End Function
 	End Class
 End Namespace
