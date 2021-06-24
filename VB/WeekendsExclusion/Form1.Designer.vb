@@ -1,6 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
-Namespace WeekendsExclusion
+﻿Namespace WeekendsExclusion
 	Partial Public Class Form1
 		''' <summary>
 		''' Required designer variable.
@@ -210,7 +208,8 @@ Namespace WeekendsExclusion
 			Me.Controls.Add(Me.layoutControl1)
 			Me.Name = "Form1"
 			Me.Text = "Form1"
-'			Me.Load += New System.EventHandler(Me.Form1_Load);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.Form1_Load);
 			CType(xyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
 			CType(stockSeriesView1, System.ComponentModel.ISupportInitialize).EndInit()
 			CType(series1, System.ComponentModel.ISupportInitialize).EndInit()
