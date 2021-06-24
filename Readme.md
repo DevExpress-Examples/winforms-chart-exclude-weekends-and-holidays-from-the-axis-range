@@ -13,6 +13,8 @@ The first chart excludes holidays and non-working days from the axis scale and s
 
 The second chart shows how to exclude axis ranges without data points. In this example, 8th of March has no data points to display and is not displayed on the X-axis.
 
+![](chart.png)
+
 ## Documentation
 
 - [Work Time and Workday Configuration](https://docs.devexpress.com/WindowsForms/16474/controls-and-libraries/chart-control/data-representation/work-time-and-workday-configuration)
