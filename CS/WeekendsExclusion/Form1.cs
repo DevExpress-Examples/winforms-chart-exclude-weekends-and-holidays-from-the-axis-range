@@ -1,9 +1,7 @@
-﻿#region #usings
 using DevExpress.XtraCharts;
 using System;
 using System.Data;
 using System.Windows.Forms;
-#endregion #usings
 
 namespace WeekendsExclusion {
     public partial class Form1 : Form {
