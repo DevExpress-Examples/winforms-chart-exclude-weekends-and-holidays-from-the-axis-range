@@ -9,9 +9,9 @@ This example demonstrates how you can exclude weekends and holidays from the X-a
 
 You can specify a custom week, or import holiday lists in Microsoft Outlook or in our native [XtraScheduler](https://docs.devexpress.com/WindowsForms/1729/controls-and-libraries/scheduler/visual-elements/scheduler-control) format.
 
-The first chart excludes holidays and non-working days from the axis scale and shows how to set custom workdays and holidays. In this example, Sunday is a working day and Saturday is a day off, 6th of March (Saturday) is an additional working day and 8th of March (Monday) is an additional holiday.
+The first chart excludes holidays and non-working days from the axis scale and shows how to set custom workdays and holidays. For this, use the [DateTimeScaleOptions.WorkdaysOnly](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraCharts.DateTimeScaleOptions.WorkdaysOnly) and [DateTimeScaleOptions.WorkdaysOptions](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraCharts.DateTimeScaleOptions.WorkdaysOptions) properties. In this example, Sunday is a working day and Saturday is a day off, 6th of March (Saturday) is an additional working day and 8th of March (Monday) is an additional holiday.
 
-The second chart shows how to exclude axis ranges without data points. In this example, 8th of March has no data points to display and is not displayed on the X-axis.
+The second chart shows how to exclude axis ranges without data points. For his, you can use the [DateTimeScaleOptions.SkipRangesWithoutPoints](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraCharts.DateTimeScaleOptions.SkipRangesWithoutPoints) property. In this example, 8th of March has no data points to display and is not displayed on the X-axis.
 
 ![](chart.png)
 
