@@ -25,21 +25,21 @@ namespace WeekendsExclusion {
 
             DateTimeScaleOptions dateTimeScaleOptions = ((XYDiagram)chartControl1.Diagram).AxisX.DateTimeScaleOptions;
 
-            // Enables workdays options.
+            // Enables workday options.
             dateTimeScaleOptions.WorkdaysOnly = true;
 
-            // Specifies custom working days.
-            // In this example, Sunday is a working day and Saturday is a day off.
+            // Specifies custom work days.
+            // In this example, Sunday is a work day and Saturday is a day off.
             dateTimeScaleOptions.WorkdaysOptions.Workdays = Weekday.Sunday | Weekday.Monday | Weekday.Tuesday |
                 Weekday.Wednesday | Weekday.Thursday | Weekday.Friday;
 
             // Specifies custom holidays.
-            // In this example, 8th of March (Monday) is an additional holiday.
+            // In this example, March 8th (Monday) is an additional holiday.
             dateTimeScaleOptions.WorkdaysOptions.Holidays.Add(
                 new KnownDate("Custom Holiday", new DateTime(2021, 3, 8, 0, 0, 0, 0)));
 
-            // Specifies working days. They have a priority over specified holidays.
-            // In this example, 6th of March (Saturday) is an additional working day.
+            // Specifies work days, which have priority over specified holidays.
+            // In this example, March 6th (Saturday) is an additional work day.
             dateTimeScaleOptions.WorkdaysOptions.ExactWorkdays.Add(
                 new KnownDate("Community Work Day", new DateTime(2021, 3, 6, 0, 0, 0, 0)));
             #endregion
@@ -53,7 +53,7 @@ namespace WeekendsExclusion {
             DateTimeScaleOptions dateTimeScaleOptions2 = ((XYDiagram)chartControl2.Diagram).AxisX.DateTimeScaleOptions;
 
             // Excludes all axis ranges without data points.
-            // In this example, 8th of March has no data points to display and is not displayed on the X-axis.
+            // In this example, March 8th has no data points to display and is not displayed on the X-axis.
             dateTimeScaleOptions2.SkipRangesWithoutPoints = true;
             #endregion
         }
