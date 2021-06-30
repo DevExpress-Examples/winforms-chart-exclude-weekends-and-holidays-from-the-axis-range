@@ -27,19 +27,19 @@ Namespace WeekendsExclusion
 
 			Dim dateTimeScaleOptions As DateTimeScaleOptions = CType(chartControl1.Diagram, XYDiagram).AxisX.DateTimeScaleOptions
 
-			' Excludes holidays from the axis scale.
+			' Enables workdays options.
 			dateTimeScaleOptions.WorkdaysOnly = True
 
-			' Specifies custom working days.
-			' In this example, Sunday is a working day and Saturday is a day off.
+			' Specifies custom work days.
+			' In this example, Sunday is a work day and Saturday is a day off.
 			dateTimeScaleOptions.WorkdaysOptions.Workdays = Weekday.Sunday Or Weekday.Monday Or Weekday.Tuesday Or Weekday.Wednesday Or Weekday.Thursday Or Weekday.Friday
 
 			' Specifies custom holidays.
 			' In this example, 8th of March (Monday) is an additional holiday.
 			dateTimeScaleOptions.WorkdaysOptions.Holidays.Add(New KnownDate("Custom Holiday", New DateTime(2021, 3, 8, 0, 0, 0, 0)))
 
-			' Specifies working days. They have a priority over specified holidays.
-			' In this example, 6th of March (Saturday) is an additional working day.
+			' Specifies work days, which have priority over specified holidays.
+			' In this example, March 6th (Saturday) is an additional work day.
 			dateTimeScaleOptions.WorkdaysOptions.ExactWorkdays.Add(New KnownDate("Community Work Day", New DateTime(2021, 3, 6, 0, 0, 0, 0)))
 			#End Region
 
@@ -52,7 +52,7 @@ Namespace WeekendsExclusion
 			Dim dateTimeScaleOptions2 As DateTimeScaleOptions = CType(chartControl2.Diagram, XYDiagram).AxisX.DateTimeScaleOptions
 
 			' Excludes all axis ranges without data points.
-			' In this example, 8th of March has no data points to display and is not displayed on the X-axis.
+			' In this example, March 8th has no data points to display and is not displayed on the X-axis.
 			dateTimeScaleOptions2.SkipRangesWithoutPoints = True
 			#End Region
 		End Sub
