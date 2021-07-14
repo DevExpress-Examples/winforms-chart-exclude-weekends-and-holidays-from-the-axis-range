@@ -12,14 +12,14 @@ Namespace WeekendsExclusion
 		End Sub
 
 		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-'			#Region "OriginalChart"
+			#Region "OriginalChart"
 			Dim series0 As Series = chartControl0.Series(0)
 			series0.ArgumentScaleType = ScaleType.DateTime
 			series0.DataSource = CreateChartData()
 			series0.SetFinancialDataMembers("Argument", "Low", "High", "Open", "Close")
-'			#End Region
+			#End Region
 
-'			#Region "Chart1"
+			#Region "Chart1"
 			Dim series1 As Series = chartControl1.Series(0)
 			series1.ArgumentScaleType = ScaleType.DateTime
 			series1.DataSource = CreateChartData()
@@ -41,9 +41,9 @@ Namespace WeekendsExclusion
 			' Specifies work days, which have priority over specified holidays.
 			' In this example, March 6th (Saturday) is an additional work day.
 			dateTimeScaleOptions.WorkdaysOptions.ExactWorkdays.Add(New KnownDate("Community Work Day", New DateTime(2021, 3, 6, 0, 0, 0, 0)))
-'			#End Region
+			#End Region
 
-'			#Region "Chart2"
+			#Region "Chart2"
 			Dim series2 As Series = chartControl2.Series(0)
 			series2.ArgumentScaleType = ScaleType.DateTime
 			series2.DataSource = CreateChartData()
@@ -54,7 +54,7 @@ Namespace WeekendsExclusion
 			' Excludes all axis ranges without data points.
 			' In this example, March 8th has no data points to display and is not displayed on the X-axis.
 			dateTimeScaleOptions2.SkipRangesWithoutPoints = True
-'			#End Region
+			#End Region
 		End Sub
 
 		Private Function CreateChartData() As DataTable
